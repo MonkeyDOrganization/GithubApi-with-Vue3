@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub search</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- Favorites -->
+        <div class="favorites">
+            <div class="favorite">
+                <a href="http://">
+                    <img src="" alt="" class="favorite_avatar">
+                </a>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <article class="content">
+            <h1 class="content__title">Search Github User</h1>
+
+            <!-- Search -->
+            <form class="search" v-on:submit.prevent="searchUser">
+                <input type="text" v-model="userName" class="search__input" required placeholder="Search GitHub users">
+                <input type="submit" class="search__submit" value="Search">
+            </form>
+
+            <!-- Result -->
+            <div class="result" v-if="result">
+                <a v-if="isFavorite" href="#" class="result__toggle-favorite" @click="removeFavorite">Remove Favorite
+                    ⭐️</a>
+                <a v-else href="#" class="result__toggle-favorite" @click="addFavorite">Add Favorite ⭐️</a>
+                <h2 class="result__name">{{ result.name }}</h2>
+                <img class="result__avatar" v-bind:src="result.avatar_url" v-bind:alt="result.name">
+                <p class="result__bio">{{ result.bio }}
+                    </br>
+                    <a class="result__link" :href="result.html_url" target="_blank">github</a>
+                </p>
+            </div>
+            <!-- <p v-else>Waiting for search...</p> -->
+
+
+            <!-- Error -->
+            <div class="result__error" v-if="error">
+                {{error}}
+            </div>
+        </article>
+    </div>
+    <script src="js/main.js"></script>
+    <script>
+        const mountedApp = app.mount('#app');
+    </script>
+</body>
+
+</html>
