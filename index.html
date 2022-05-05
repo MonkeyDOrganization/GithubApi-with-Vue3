@@ -14,9 +14,9 @@
     <div id="app">
         <!-- Favorites -->
         <div class="favorites">
-            <div class="favorite">
-                <a href="http://">
-                    <img src="" alt="" class="favorite_avatar">
+            <div class="favorite" v-for="favorite in allFavorites">
+                <a :href="favorite.html_url">
+                    <img class="result__avatar" v-bind:src="favorite.avatar_url" :alt="favorite.name">
                 </a>
             </div>
         </div>
