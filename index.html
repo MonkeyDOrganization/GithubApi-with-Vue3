@@ -15,7 +15,7 @@
         <!-- Favorites -->
         <div class="favorites">
             <div class="favorite" v-for="favorite in allFavorites">
-                <a :href="favorite.html_url">
+                <a @click.prevent="showFavorite(favorite)" href="#">
                     <img class="result__avatar" v-bind:src="favorite.avatar_url" :alt="favorite.name">
                 </a>
             </div>
@@ -38,9 +38,10 @@
                 <a v-else href="#" class="result__toggle-favorite" @click="addFavorite">Add Favorite ⭐️</a>
                 <h2 class="result__name">{{ result.name }}</h2>
                 <img class="result__avatar" v-bind:src="result.avatar_url" v-bind:alt="result.name">
-                <p class="result__bio">{{ result.bio }}
+                <p class="result__bio">
+                    {{ result.bio }}
                     </br>
-                    <a class="result__link" :href="result.html_url" target="_blank">github</a>
+                    <a class="result__link" :href="result.html_url" target="_blank">Github Url</a>
                 </p>
             </div>
             <!-- <p v-else>Waiting for search...</p> -->
