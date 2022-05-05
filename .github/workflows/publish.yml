@@ -1,0 +1,13 @@
+name: Publish static page
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  Publish:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Echo message
+        run: echo "Hello Pato"
